@@ -1,5 +1,5 @@
 def generate(teams, blocks, i=0, j=0):
-    print(i, j)
+    #print(i, j)
     if i == len(teams):
         return True
     elif j == len(blocks):

@@ -7,10 +7,12 @@ blocks = block.Block.load('blocks.csv')
 
 for block in blocks:
     block.create_rows(len(teams))
-    print(block.name, block.start_time, block.end_time)
+    #print(block.name, block.start_time, block.end_time)
 
-generator.generate(teams, blocks)
-
-output = outputter.Outputter(teams, blocks)
-output.by_team('by_team.csv')
-output.all_blocks('block_')
+if generator.generate(teams, blocks):
+    print('generate successful')
+    output = outputter.Outputter(teams, blocks)
+    output.by_team('by_team.csv')
+    output.all_blocks('block_')
+else:
+    print('generate failed')
