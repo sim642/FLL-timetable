@@ -5,9 +5,10 @@ import outputter
 teams = team.Team.load('teams.csv')
 blocks = block.Block.load('blocks.csv')
 
+block.Block.blocks_create_rows(teams, blocks)
+
 for block in blocks:
-    block.create_rows(len(teams))
-    #print(block.name, block.start_time, block.end_time)
+    print(block.name, block.start_time, block.end_time)
 
 if generator.generate(teams, blocks):
     print('generate successful')
