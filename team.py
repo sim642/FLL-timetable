@@ -4,7 +4,7 @@ class Team:
     def __init__(self, row):
         self.name = row['name']
 
-        self.rows = None
+        self.rows = []
 
     @staticmethod
     def load(filename):

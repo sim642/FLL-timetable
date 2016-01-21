@@ -4,6 +4,8 @@ import math
 
 class Row:
     def __init__(self, block, i):
+        self.block = block
+
         self.columns = block.columns
         self.row_time = block.row_time
         self.cleanup_time = block.cleanup_time
@@ -11,9 +13,15 @@ class Row:
         self.total_time = self.row_time + self.cleanup_time
         self.start_time = block.start_time + i * self.total_time
 
+        self.teams = []
+
     @property
     def end_time(self):
         return self.start_time + self.total_time
+
+    @property
+    def free_columns(self):
+        return self.columns - len(self.teams)
 
 class Block:
     def __init__(self, row):
