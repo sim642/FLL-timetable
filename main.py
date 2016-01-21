@@ -14,6 +14,6 @@ if generator.generate(teams, blocks):
     print('generate successful')
     output = outputter.Outputter(teams, blocks)
     output.by_team('by_team.csv')
-    output.all_blocks('block_')
+    output.all_blocks('block_{}.csv')
 else:
     print('generate failed')

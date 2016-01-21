@@ -31,6 +31,6 @@ class Outputter:
                     rowdict[str(i)] = team.name
                 writer.writerow(rowdict)
 
-    def all_blocks(self, prefix):
+    def all_blocks(self, pattern):
         for block in self.blocks:
-            self.one_block(block, prefix + block.name + '.csv')
+            self.one_block(block, pattern.format(block.name))
