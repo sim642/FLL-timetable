@@ -13,3 +13,4 @@ generator.generate(teams, blocks)
 
 output = outputter.Outputter(teams, blocks)
 output.by_team('by_team.csv')
+output.all_blocks('block_')
