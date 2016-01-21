@@ -7,6 +7,7 @@ class Row:
         self.block = block
 
         self.columns = block.columns
+        self.setup_time = block.setup_time
         self.row_time = block.row_time
         self.cleanup_time = block.cleanup_time
 
@@ -24,7 +25,7 @@ class Row:
         return self.columns - len(self.teams)
 
     def during(self, dt):
-        return self.start_time <= dt < self.end_time
+        return self.start_time - self.setup_time <= dt < self.end_time - self.cleanup_time
 
     def conflicts(self, other):
         return self.during(other.start_time) or other.during(self.start_time)
