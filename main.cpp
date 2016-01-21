@@ -2,21 +2,30 @@
 #include <fstream>
 #include "csv/csv.hpp"
 #include <algorithm>
+#include <vector>
+#include "Team.hpp"
+#include "Block.hpp"
 
 using namespace std;
 
 int main()
 {
-    ifstream fin("blocks.csv");
-    ofstream fout("test.csv");
-
-    /*for (csv::input_iterator it(fin); it != csv::input_iterator(); ++it)
+    vector<Team> teams;
     {
-        for (auto &p : *it)
-			cout << p.first << ": " << p.second << endl;
-		cout << "------" << endl;
-    }*/
+        ifstream fin("teams.csv");
+        copy(csv::input_iterator(fin), csv::input_iterator(), back_inserter(teams));
+    }
 
-    copy(csv::input_iterator(fin), csv::input_iterator(), csv::output_iterator(fout, {"name", "start_time"}));
+    vector<Block> blocks;
+    {
+        ifstream fin("blocks.csv");
+        copy(csv::input_iterator(fin), csv::input_iterator(), back_inserter(blocks));
+    }
+
+    for (auto &block : blocks)
+        block.create_rows(teams.size());
+
+    for (auto &block : blocks)
+        cout << block.name << " " << block.columns << " " << block.rows.size() << endl;
     return 0;
 }

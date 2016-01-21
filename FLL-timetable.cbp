@@ -33,6 +33,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Block.cpp" />
+		<Unit filename="Block.hpp" />
+		<Unit filename="Row.cpp" />
+		<Unit filename="Row.hpp" />
+		<Unit filename="Team.cpp" />
+		<Unit filename="Team.hpp" />
+		<Unit filename="common.cpp" />
+		<Unit filename="common.hpp" />
 		<Unit filename="csv/csv.hpp" />
 		<Unit filename="csv/input_iterator.cpp" />
 		<Unit filename="csv/input_iterator.hpp" />
