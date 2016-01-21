@@ -7,6 +7,7 @@
 #include "Block.hpp"
 #include "Generator.hpp"
 #include "TeamOutputter.hpp"
+#include "Timer.hpp"
 
 using namespace std;
 
@@ -31,6 +32,7 @@ int main()
         cout << block.name << " " << block.columns << " " << block.rows.size() << " " << strftime("%Y-%m-%d %H:%M", block.start_time) << endl;
 
     Generator g(teams, blocks);
+    Timer t;
     bool r = g.generate();
     if (r)
     {
@@ -39,5 +41,7 @@ int main()
     }
     else
         cout << "generate failed" << endl;
+    auto dur = t.get();
+    cout << "took " << std::chrono::duration<double, std::chrono::minutes::period>(dur).count() << " min" << endl;
     return 0;
 }

@@ -45,6 +45,8 @@
 		<Unit filename="Team.hpp" />
 		<Unit filename="TeamOutputter.cpp" />
 		<Unit filename="TeamOutputter.hpp" />
+		<Unit filename="Timer.cpp" />
+		<Unit filename="Timer.hpp" />
 		<Unit filename="common.cpp" />
 		<Unit filename="common.hpp" />
 		<Unit filename="csv/common.hpp" />
