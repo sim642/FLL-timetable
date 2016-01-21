@@ -6,6 +6,7 @@
 #include "Team.hpp"
 #include "Block.hpp"
 #include "Generator.hpp"
+#include "TeamOutputter.hpp"
 
 using namespace std;
 
@@ -32,7 +33,10 @@ int main()
     Generator g(teams, blocks);
     bool r = g.generate();
     if (r)
+    {
         cout << "generate successful" << endl;
+        TeamOutputter(teams, blocks).output("out_teams.csv");
+    }
     else
         cout << "generate failed" << endl;
     return 0;

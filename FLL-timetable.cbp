@@ -37,10 +37,14 @@
 		<Unit filename="Block.hpp" />
 		<Unit filename="Generator.cpp" />
 		<Unit filename="Generator.hpp" />
+		<Unit filename="Outputter.cpp" />
+		<Unit filename="Outputter.hpp" />
 		<Unit filename="Row.cpp" />
 		<Unit filename="Row.hpp" />
 		<Unit filename="Team.cpp" />
 		<Unit filename="Team.hpp" />
+		<Unit filename="TeamOutputter.cpp" />
+		<Unit filename="TeamOutputter.hpp" />
 		<Unit filename="common.cpp" />
 		<Unit filename="common.hpp" />
 		<Unit filename="csv/csv.hpp" />
