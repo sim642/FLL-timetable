@@ -21,11 +21,11 @@ bool Row::conflicts(const Row& other) const
 	return during(other.start_time) || other.during(start_time);
 }
 
-bool Row::any_conflicts(const std::vector<Row>& others) const
+bool Row::any_conflicts(const std::vector<Row*>& others) const
 {
 	for (auto &other : others)
 	{
-		if (conflicts(other))
+		if (conflicts(*other))
 			return true;
 	}
 	return false;

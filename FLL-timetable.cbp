@@ -35,6 +35,8 @@
 		</Compiler>
 		<Unit filename="Block.cpp" />
 		<Unit filename="Block.hpp" />
+		<Unit filename="Generator.cpp" />
+		<Unit filename="Generator.hpp" />
 		<Unit filename="Row.cpp" />
 		<Unit filename="Row.hpp" />
 		<Unit filename="Team.cpp" />

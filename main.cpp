@@ -5,6 +5,7 @@
 #include <vector>
 #include "Team.hpp"
 #include "Block.hpp"
+#include "Generator.hpp"
 
 using namespace std;
 
@@ -27,5 +28,12 @@ int main()
 
     for (auto &block : blocks)
         cout << block.name << " " << block.columns << " " << block.rows.size() << endl;
+
+    Generator g(teams, blocks);
+    bool r = g.generate();
+    if (r)
+        cout << "generate successful" << endl;
+    else
+        cout << "generate failed" << endl;
     return 0;
 }
