@@ -23,6 +23,15 @@ class Row:
     def free_columns(self):
         return self.columns - len(self.teams)
 
+    def during(self, dt):
+        return self.start_time <= dt < self.end_time
+
+    def conflicts(self, other):
+        return self.during(other.start_time) or other.during(self.start_time)
+
+    def any_conflicts(self, iterable):
+        return any((self.conflicts(other) for other in iterable))
+
 class Block:
     def __init__(self, row):
         self.name = row['name']
