@@ -1,0 +1,7 @@
+name,columns,start_time,setup_time,row_time,cleanup_time
+Robotimängu 1. voor,4,2016-01-23 12:45,0,5,5
+Robotimängu 2. voor,4,2016-01-23 13:25,0,5,5
+Robotimängu 3. voor,4,2016-01-23 14:05,0,5,5
+Robotimängu harjutus,2,2016-01-23 11:00,0,20,0
+Roboti disain,4,2016-01-23 11:00,5,10,5
+Projekt ja põhiväärtused,4,2016-01-23 11:00,10,20,5
