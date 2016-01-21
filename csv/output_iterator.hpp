@@ -1,7 +1,7 @@
 #ifndef CSV_OUTPUT_ITERATOR_H
 #define CSV_OUTPUT_ITERATOR_H
 
-#include "csv.hpp"
+#include "common.hpp"
 #include <boost/function_output_iterator.hpp>
 #include <iterator>
 #include <ostream>

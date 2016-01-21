@@ -1,7 +1,7 @@
 #ifndef CSV_INPUT_ITERATOR_H
 #define CSV_INPUT_ITERATOR_H
 
-#include "csv.hpp"
+#include "common.hpp"
 #include <boost/iterator/iterator_facade.hpp>
 #include <iterator>
 #include <istream>
