@@ -13,14 +13,15 @@ class output_iterator;
 
 class output_iterator_
 {
-	public:
-		void operator()(const row_t &cur);
-
 	private:
 		friend class output_iterator;
 		friend class boost::function_output_iterator<output_iterator_>;
+
 		output_iterator_();
 		output_iterator_(std::ostream &n_os, const cols_t &n_cols);
+		void operator()(const row_t &cur);
+
+		static std::string escape(std::string str);
 
 		std::ostream *os;
 		cols_t cols;
