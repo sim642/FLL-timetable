@@ -28,7 +28,7 @@ int main()
         block.create_rows(teams.size());
 
     for (auto &block : blocks)
-        cout << block.name << " " << block.columns << " " << block.rows.size() << endl;
+        cout << block.name << " " << block.columns << " " << block.rows.size() << " " << strftime("%Y-%m-%d %H:%M", block.start_time) << endl;
 
     Generator g(teams, blocks);
     bool r = g.generate();
