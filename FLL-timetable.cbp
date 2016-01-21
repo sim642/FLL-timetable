@@ -36,6 +36,8 @@
 		<Unit filename="csv/csv.hpp" />
 		<Unit filename="csv/input_iterator.cpp" />
 		<Unit filename="csv/input_iterator.hpp" />
+		<Unit filename="csv/output_iterator.cpp" />
+		<Unit filename="csv/output_iterator.hpp" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

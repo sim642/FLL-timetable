@@ -5,13 +5,11 @@
 #include <boost/iterator/iterator_facade.hpp>
 #include <iterator>
 #include <istream>
-#include <vector>
-#include <string>
 
 namespace csv
 {
 
-class input_iterator : public boost::iterator_facade<input_iterator, const row_t, boost::forward_traversal_tag>
+class input_iterator : public boost::iterator_facade<input_iterator, const row_t, std::input_iterator_tag>
 {
 	public:
 		input_iterator();
@@ -25,7 +23,7 @@ class input_iterator : public boost::iterator_facade<input_iterator, const row_t
 		const row_t& dereference() const;
 
 		std::istream *is;
-		std::vector<std::string> cols;
+		cols_t cols;
 		row_t cur;
 };
 
