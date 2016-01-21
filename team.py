@@ -4,6 +4,8 @@ class Team:
     def __init__(self, row):
         self.name = row['name']
 
+        self.rows = None
+
     @staticmethod
     def load(filename):
         with open(filename) as csvfile:

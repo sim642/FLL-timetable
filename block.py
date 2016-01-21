@@ -1,5 +1,16 @@
 import csv
 import datetime
+import math
+
+class Row:
+    def __init__(self, block, i):
+        self.columns = block.columns
+        self.row_time = block.row_time
+        self.cleanup_time = block.cleanup_time
+
+        self.total_time = self.row_time + self.cleanup_time
+        self.start_time = block.start_time + i * self.total_time
+
 
 class Block:
     def __init__(self, row):
@@ -9,6 +20,10 @@ class Block:
         self.setup_time = datetime.timedelta(minutes=int(row['setup_time']))
         self.row_time = datetime.timedelta(minutes=int(row['row_time']))
         self.cleanup_time = datetime.timedelta(minutes=int(row['cleanup_time']))
+
+    def create_rows(self, teamcnt):
+        rowcnt = math.ceil(teamcnt / self.columns)
+        self.rows = [Row(self, i) for i in range(rowcnt)]
 
     @staticmethod
     def load(filename):
