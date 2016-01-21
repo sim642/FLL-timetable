@@ -61,20 +61,19 @@ class Block:
         self.rows = [Row(self, i) for i in range(rowcnt)]
         self.total_time = rowcnt * (self.row_time + self.cleanup_time)
 
-    @staticmethod
-    def load(filename):
-        with open(filename) as csvfile:
-            reader = csv.DictReader(csvfile)
-            return [Block(row) for row in reader]
 
-    @staticmethod
-    def blocks_create_rows(teams, blocks):
-        for block in blocks:
-            if block.parent:
-                parents = [parent for parent in blocks if parent.name == block.parent]
-                assert len(parents) == 1, 'No/excess parent blocks found'
+def load(filename):
+    with open(filename) as csvfile:
+        reader = csv.DictReader(csvfile)
+        return [Block(row) for row in reader]
 
-                block.parent = parents[0]
-                block.start_time = block.parent.end_time
+def create_rows(teams, blocks):
+    for block in blocks:
+        if block.parent:
+            parents = [parent for parent in blocks if parent.name == block.parent]
+            assert len(parents) == 1, 'No/excess parent blocks found'
 
-            block.create_rows(len(teams))
+            block.parent = parents[0]
+            block.start_time = block.parent.end_time
+
+        block.create_rows(len(teams))
