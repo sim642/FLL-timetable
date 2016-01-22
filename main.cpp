@@ -34,7 +34,10 @@ int main()
     int i = 0;
     Timer t;
 
-    MultiGenerator g(s, [&](std::thread::id id, bool r)
+    MultiGenerator g(s, [](State &s)
+    {
+        return new Generator(s);
+    }, [&](std::thread::id id, bool r)
     {
         cout << "attempt " << ++i << " (" << id << "): " << r << endl;
     });

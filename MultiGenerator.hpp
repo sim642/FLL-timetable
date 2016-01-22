@@ -12,9 +12,10 @@
 class MultiGenerator : public AbstractGenerator
 {
 	public:
+		typedef std::function<AbstractGenerator*(State&)> gen_func_t;
 		typedef std::function<void(std::thread::id, bool)> ret_func_t;
 
-		MultiGenerator(State &n_s, ret_func_t n_ret_func = ret_func_t());
+		MultiGenerator(State &n_s, gen_func_t n_gen_func = gen_func_t(), ret_func_t n_ret_func = ret_func_t());
 		virtual ~MultiGenerator();
 
 		virtual bool generate();
@@ -23,6 +24,8 @@ class MultiGenerator : public AbstractGenerator
 		void run();
 
 		std::vector<std::thread> threads;
+
+		gen_func_t gen_func;
 
 		std::mutex ret_func_mutex;
 		ret_func_t ret_func;
