@@ -9,4 +9,6 @@ using system_clock = std::chrono::system_clock;
 system_clock::time_point strptime(const std::string &str, const std::string &format);
 std::string strftime(const std::string &format, const system_clock::time_point &tp);
 
+constexpr auto time_format = "%Y-%m-%d %H:%M";
+
 #endif /* COMMON_H */

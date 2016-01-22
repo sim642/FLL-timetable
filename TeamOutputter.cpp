@@ -1,6 +1,7 @@
 #include "TeamOutputter.hpp"
 #include <fstream>
 #include "csv/csv.hpp"
+#include "common.hpp"
 
 TeamOutputter::TeamOutputter(State &n_s) : Outputter(n_s)
 {
@@ -26,7 +27,7 @@ void TeamOutputter::output(const std::string& filename)
 		csv::row_t csvrow;
 		csvrow["name"] = team.name;
 		for (auto &row : team.rows)
-			csvrow[row->block.name] = strftime("%Y-%m-%d %H:%M", row->start_time);
+			csvrow[row->block.name] = strftime(time_format, row->start_time);
 		*it++ = csvrow;
     }
 }
