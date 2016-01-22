@@ -4,6 +4,7 @@
 #include <vector>
 #include "Team.hpp"
 #include "Block.hpp"
+#include <random>
 
 class Generator
 {
@@ -16,6 +17,8 @@ class Generator
 	private:
 		std::vector<Team> &teams;
 		std::vector<Block> &blocks;
+
+		std::mt19937 g;
 };
 
 #endif // GENERATOR_H
