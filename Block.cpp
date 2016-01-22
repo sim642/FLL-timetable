@@ -11,6 +11,12 @@ Block::Block(const csv::row_t &row)
 	cleanup_time = std::chrono::minutes(stoi(row.find("cleanup_time")->second));
 }
 
+Block::Block(const Block &other) : name(other.name), columns(other.columns), start_time(other.start_time), setup_time(other.setup_time), row_time(other.row_time), cleanup_time(other.cleanup_time)
+{
+	for (auto &row : other.rows)
+		rows.emplace_back(row, *this);
+}
+
 Block::~Block()
 {
 

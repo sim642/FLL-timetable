@@ -11,6 +11,7 @@ class Row
 {
 	public:
 		Row(const Block &n_block, int i);
+		Row(const Row &other, const Block &n_block);
 		virtual ~Row();
 
 		bool during(const system_clock::time_point &tp) const;

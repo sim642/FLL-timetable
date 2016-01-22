@@ -6,6 +6,11 @@ Row::Row(const Block &n_block, int i) : block(n_block)
 	start_time = block.start_time + i * (block.row_time + block.cleanup_time);
 }
 
+Row::Row(const Row &other, const Block &n_block) : block(n_block), start_time(other.start_time), teams(other.teams)
+{
+
+}
+
 Row::~Row()
 {
 

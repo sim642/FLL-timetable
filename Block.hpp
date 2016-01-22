@@ -11,6 +11,7 @@ class Block
 {
 	public:
 		Block(const csv::row_t &row);
+		Block(const Block &other);
 		virtual ~Block();
 
 		std::string name;
