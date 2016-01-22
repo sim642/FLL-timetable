@@ -7,7 +7,7 @@
 class Generator : public AbstractGenerator
 {
 	public:
-		Generator(State &n_s);
+		Generator(State &n_s, float n_discard);
 		virtual ~Generator();
 
 		virtual bool generate();
@@ -19,6 +19,8 @@ class Generator : public AbstractGenerator
 		decltype(State::blocks) &blocks;
 
 		std::mt19937 g;
+
+		float discard;
 };
 
 #endif // GENERATOR_H

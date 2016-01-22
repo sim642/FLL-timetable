@@ -1,7 +1,7 @@
 #include "Generator.hpp"
 #include <algorithm>
 
-Generator::Generator(State &n_s) : AbstractGenerator(n_s), teams(s.teams), blocks(s.blocks), g(std::random_device()())
+Generator::Generator(State &n_s, float n_discard) : AbstractGenerator(n_s), teams(s.teams), blocks(s.blocks), g(std::random_device()()), discard(n_discard)
 {
 
 }
@@ -32,8 +32,8 @@ bool Generator::generate_(int i, int j)
 
 		std::shuffle(rows.begin(), rows.end(), g);
 
-		//for (auto &row : rows)
-		for (int k = 0; k < rows.size() / 2; k++)
+		int end = rows.size() * (1.f - discard);
+		for (int k = 0; k < end; k++)
 		{
 			auto &row = *rows[k];
 			if ((blocks[j].columns - row.teams.size() > 0) && !row.any_conflicts(team.rows))
