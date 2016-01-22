@@ -13,7 +13,7 @@ class Generator : public AbstractGenerator
 		virtual bool generate();
 
 	private:
-		bool generate_(int i, int j);
+		bool generate_(size_t i, size_t j);
 
 		decltype(State::teams) &teams;
 		decltype(State::blocks) &blocks;

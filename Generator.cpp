@@ -16,7 +16,7 @@ bool Generator::generate()
 	return generate_(0, 0);
 }
 
-bool Generator::generate_(int i, int j)
+bool Generator::generate_(size_t i, size_t j)
 {
 	if (i == teams.size())
 		return true;
