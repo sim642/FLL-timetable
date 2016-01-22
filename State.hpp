@@ -10,6 +10,8 @@ class State
 	public:
 		std::vector<Team> teams;
 		std::vector<Block> blocks;
+
+		void create_rows();
 };
 
 #endif // STATE_H

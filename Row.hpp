@@ -14,6 +14,8 @@ class Row
 		Row(const Row &other, const Block &n_block);
 		virtual ~Row();
 
+		system_clock::time_point end_time() const;
+
 		bool during(const system_clock::time_point &tp) const;
 		bool conflicts(const Row &other) const;
 		bool any_conflicts(const std::vector<Row*> &others) const;

@@ -6,13 +6,22 @@ Block::Block(const csv::row_t &row)
 {
 	name = row.find("name")->second;
 	columns = stoi(row.find("columns")->second);
-	start_time = strptime(row.find("start_time")->second, time_format);
+	try
+	{
+		start_time = strptime(row.find("start_time")->second, time_format);
+		parent_name = "";
+	}
+	catch (const std::runtime_error &e)
+	{
+		start_time = system_clock::time_point::min();
+		parent_name = row.find("start_time")->second;
+	}
 	setup_time = std::chrono::minutes(stoi(row.find("setup_time")->second));
 	row_time = std::chrono::minutes(stoi(row.find("row_time")->second));
 	cleanup_time = std::chrono::minutes(stoi(row.find("cleanup_time")->second));
 }
 
-Block::Block(const Block &other) : name(other.name), columns(other.columns), start_time(other.start_time), setup_time(other.setup_time), row_time(other.row_time), cleanup_time(other.cleanup_time)
+Block::Block(const Block &other) : name(other.name), columns(other.columns), start_time(other.start_time), parent_name(other.parent_name), setup_time(other.setup_time), row_time(other.row_time), cleanup_time(other.cleanup_time)
 {
 	for (auto &row : other.rows)
 		rows.emplace_back(row, *this);
@@ -21,6 +30,14 @@ Block::Block(const Block &other) : name(other.name), columns(other.columns), sta
 Block::~Block()
 {
 
+}
+
+system_clock::time_point Block::end_time() const
+{
+	if (!rows.empty())
+		return rows.back().end_time();
+	else
+		return start_time;
 }
 
 void Block::create_rows(unsigned int teamcnt)

@@ -14,9 +14,12 @@ class Block
 		Block(const Block &other);
 		virtual ~Block();
 
+		system_clock::time_point end_time() const;
+
 		std::string name;
 		unsigned int columns;
 		system_clock::time_point start_time;
+		std::string parent_name;
 		system_clock::duration setup_time, row_time, cleanup_time;
 		std::vector<Row> rows;
 

@@ -24,8 +24,7 @@ int main()
         copy(csv::input_iterator(fin), csv::input_iterator(), back_inserter(s.blocks));
     }
 
-    for (auto &block : s.blocks)
-        block.create_rows(s.teams.size());
+    s.create_rows();
 
     for (auto &block : s.blocks)
         cout << block.name << " " << block.columns << " " << block.rows.size() << " " << strftime(time_format, block.start_time) << endl;

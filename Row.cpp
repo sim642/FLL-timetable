@@ -16,6 +16,11 @@ Row::~Row()
 
 }
 
+system_clock::time_point Row::end_time() const
+{
+	return start_time + block.row_time + block.cleanup_time;
+}
+
 bool Row::during(const system_clock::time_point& tp) const
 {
 	return (start_time - block.setup_time <= tp) && (tp < start_time + block.row_time);
