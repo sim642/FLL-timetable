@@ -31,17 +31,22 @@ int main()
     for (auto &block : blocks)
         cout << block.name << " " << block.columns << " " << block.rows.size() << " " << strftime("%Y-%m-%d %H:%M", block.start_time) << endl;
 
-    Generator g(teams, blocks);
-    Timer t;
-    bool r = g.generate();
-    if (r)
+    bool r;
+    do
     {
-        cout << "generate successful" << endl;
-        TeamOutputter(teams, blocks).output("out_teams.csv");
+        Generator g(teams, blocks);
+        Timer t;
+        r = g.generate();
+        if (r)
+        {
+            cout << "generate successful" << endl;
+            TeamOutputter(teams, blocks).output("out_teams.csv");
+        }
+        else
+            cout << "generate failed" << endl;
+        auto dur = t.get();
+        cout << "took " << std::chrono::duration<double, std::chrono::minutes::period>(dur).count() << " min" << endl;
     }
-    else
-        cout << "generate failed" << endl;
-    auto dur = t.get();
-    cout << "took " << std::chrono::duration<double, std::chrono::minutes::period>(dur).count() << " min" << endl;
+    while (!r);
     return 0;
 }
