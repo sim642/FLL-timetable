@@ -44,5 +44,6 @@ bool Generator::generate(int i, int j)
 				team.rows.pop_back();
 			}
 		}
+		return false;
 	}
 }
