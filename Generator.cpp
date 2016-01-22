@@ -32,10 +32,10 @@ bool Generator::generate_(size_t i, size_t j)
 
 		std::shuffle(rows.begin(), rows.end(), g);
 
-		int end = rows.size() * (1.f - discard);
-		for (int k = 0; k < end; k++)
+		auto end = rows.begin() + rows.size() * (1.f - discard);
+		for (auto it = rows.begin(); it != end; ++it)
 		{
-			auto &row = *rows[k];
+			auto &row = **it;
 			if ((blocks[j].columns - row.teams.size() > 0) && !row.any_conflicts(team.rows))
 			{
 				team.rows.push_back(&row);
