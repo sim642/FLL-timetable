@@ -1,7 +1,7 @@
 #include "Generator.hpp"
 #include <algorithm>
 
-Generator::Generator(State &n_s) : teams(n_s.teams), blocks(n_s.blocks), g(std::random_device()())
+Generator::Generator(State &n_s) : AbstractGenerator(n_s), teams(s.teams), blocks(s.blocks), g(std::random_device()())
 {
 
 }
@@ -11,12 +11,17 @@ Generator::~Generator()
 
 }
 
-bool Generator::generate(int i, int j)
+bool Generator::generate()
+{
+	return generate_(0, 0);
+}
+
+bool Generator::generate_(int i, int j)
 {
 	if (i == teams.size())
 		return true;
 	else if (j == blocks.size())
-		return generate(i + 1, 0);
+		return generate_(i + 1, 0);
 	else
 	{
 		Team &team = teams[i];
@@ -36,7 +41,7 @@ bool Generator::generate(int i, int j)
 				team.rows.push_back(&row);
 				row.teams.push_back(&team);
 
-				bool r = generate(i, j + 1);
+				bool r = generate_(i, j + 1);
 				if (r)
 					return true;
 

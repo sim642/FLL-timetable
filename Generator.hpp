@@ -1,18 +1,20 @@
 #ifndef GENERATOR_H
 #define GENERATOR_H
 
-#include "State.hpp"
+#include "AbstractGenerator.hpp"
 #include <random>
 
-class Generator
+class Generator : public AbstractGenerator
 {
 	public:
 		Generator(State &n_s);
 		virtual ~Generator();
 
-		bool generate(int i = 0, int j = 0);
+		virtual bool generate();
 
 	private:
+		bool generate_(int i, int j);
+
 		decltype(State::teams) &teams;
 		decltype(State::blocks) &blocks;
 

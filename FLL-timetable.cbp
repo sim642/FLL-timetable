@@ -34,6 +34,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="AbstractGenerator.cpp" />
+		<Unit filename="AbstractGenerator.hpp" />
 		<Unit filename="Block.cpp" />
 		<Unit filename="Block.hpp" />
 		<Unit filename="Generator.cpp" />

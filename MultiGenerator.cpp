@@ -1,7 +1,8 @@
 #include "MultiGenerator.hpp"
 #include "Generator.hpp"
+#include <memory>
 
-MultiGenerator::MultiGenerator(State &n_s) : s(n_s), done(false)
+MultiGenerator::MultiGenerator(State &n_s) : AbstractGenerator(n_s), done(false)
 {
 
 }
@@ -28,8 +29,8 @@ void MultiGenerator::run()
 	bool r;
 	do
 	{
-		Generator g(s);
-		r = g.generate();
+		std::unique_ptr<AbstractGenerator> g(new Generator(s));
+		r = g->generate();
 	}
 	while (!done && !r);
 

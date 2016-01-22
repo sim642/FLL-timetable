@@ -1,26 +1,23 @@
 #ifndef MULTIGENERATOR_H
 #define MULTIGENERATOR_H
 
-#include "Generator.hpp"
-#include "State.hpp"
+#include "AbstractGenerator.hpp"
 #include <thread>
 #include <vector>
 #include <mutex>
 #include <condition_variable>
 #include <atomic>
 
-class MultiGenerator
+class MultiGenerator : public AbstractGenerator
 {
 	public:
 		MultiGenerator(State &n_s);
 		virtual ~MultiGenerator();
 
-		bool generate();
+		virtual bool generate();
 
 	private:
 		void run();
-
-		State &s;
 
 		std::vector<std::thread> threads;
 
