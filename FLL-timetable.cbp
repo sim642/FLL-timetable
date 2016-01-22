@@ -41,6 +41,8 @@
 		<Unit filename="AbstractGenerator.hpp" />
 		<Unit filename="Block.cpp" />
 		<Unit filename="Block.hpp" />
+		<Unit filename="BlockOutputter.cpp" />
+		<Unit filename="BlockOutputter.hpp" />
 		<Unit filename="Generator.cpp" />
 		<Unit filename="Generator.hpp" />
 		<Unit filename="MultiGenerator.cpp" />
