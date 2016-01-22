@@ -34,12 +34,12 @@ int main()
     int i = 0;
     Timer t;
 
-    MultiGenerator g(s, [](State &s)
+    MultiGenerator g(s, 0, [](State &s)
     {
-        return new Generator(s, 0.4f);
+        return new Generator(s, 0.5f);
     }, [&](std::thread::id id, bool r)
     {
-        cout << "attempt " << ++i << " (" << id << "): " << r << endl;
+        cout << "attempt " << dec << ++i << " (0x" << hex << id << "): " << r << endl;
     });
 
     r = g.generate();

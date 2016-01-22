@@ -1,7 +1,7 @@
 #include "MultiGenerator.hpp"
 #include <memory>
 
-MultiGenerator::MultiGenerator(State &n_s, gen_func_t n_gen_func, ret_func_t n_ret_func) : AbstractGenerator(n_s), gen_func(n_gen_func), ret_func(n_ret_func), done(false)
+MultiGenerator::MultiGenerator(State &n_s, unsigned int n_threadcnt, gen_func_t n_gen_func, ret_func_t n_ret_func) : AbstractGenerator(n_s), threadcnt(n_threadcnt == 0 ? std::thread::hardware_concurrency() : n_threadcnt), gen_func(n_gen_func), ret_func(n_ret_func), done(false)
 {
 
 }
@@ -13,7 +13,8 @@ MultiGenerator::~MultiGenerator()
 
 bool MultiGenerator::generate()
 {
-	threads.emplace_back(&MultiGenerator::run, this);
+	for (unsigned int i = 0; i < threadcnt; i++)
+		threads.emplace_back(&MultiGenerator::run, this);
 
 	for (auto &thread : threads)
 		thread.join();
@@ -25,10 +26,12 @@ bool MultiGenerator::generate()
 
 void MultiGenerator::run()
 {
+	State local_s(s);
+
 	bool r;
 	do
 	{
-		std::unique_ptr<AbstractGenerator> g(gen_func(s));
+		std::unique_ptr<AbstractGenerator> g(gen_func(local_s));
 		r = g->generate();
 
 		{
@@ -42,6 +45,7 @@ void MultiGenerator::run()
 	{
 		std::lock_guard<std::mutex> lk(done_mutex);
 		done = true;
+		s = std::move(local_s); // TODO: confirm this doesn't break anything
 		done_cv.notify_all();
 	}
 }
