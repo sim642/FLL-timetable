@@ -18,7 +18,9 @@ bool Generator::generate()
 
 bool Generator::generate_(size_t i, size_t j)
 {
-	if (i == teams.size())
+	if (should_cancel())
+		return false;
+	else if (i == teams.size())
 		return true;
 	else if (j == blocks.size())
 		return generate_(i + 1, 0);

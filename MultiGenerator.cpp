@@ -20,7 +20,7 @@ bool MultiGenerator::generate()
 		thread.join();
 
 	std::unique_lock<std::mutex> lk(done_mutex);
-	done_cv.wait(lk, [this]{ return done.load(); });
+	done_cv.wait(lk, [this]{ return done.load() || should_cancel(); });
 	return true;
 }
 
@@ -32,6 +32,7 @@ void MultiGenerator::run(unsigned int thread_i)
 	do
 	{
 		std::unique_ptr<AbstractGenerator> g(gen_func(local_s));
+		g->cancel = &done;
 		r = g->generate();
 
 		{

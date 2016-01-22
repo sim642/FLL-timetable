@@ -2,6 +2,7 @@
 #define ABSTRACTGENERATOR_H
 
 #include "State.hpp"
+#include <atomic>
 
 class AbstractGenerator
 {
@@ -11,7 +12,10 @@ class AbstractGenerator
 
 		virtual bool generate() = 0;
 
+		std::atomic<bool> *cancel;
 	protected:
+		bool should_cancel() const;
+
 		State &s;
 };
 
