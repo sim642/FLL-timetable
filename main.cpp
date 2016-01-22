@@ -7,6 +7,7 @@
 #include "Timer.hpp"
 #include "State.hpp"
 #include "MultiGenerator.hpp"
+#include "BlocksOutputter.hpp"
 
 using namespace std;
 
@@ -47,6 +48,7 @@ int main()
     {
         cout << "generate successful" << endl;
         TeamOutputter(s).output("out_teams.csv");
+        BlocksOutputter(s).output("block_%d.csv");
     }
     else
         cout << "generate failed" << endl;

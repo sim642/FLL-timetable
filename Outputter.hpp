@@ -13,6 +13,8 @@ class Outputter
 		virtual void output(const std::string &filename) = 0;
 
 	protected:
+		State &s;
+
 		decltype(State::teams) &teams;
 		decltype(State::blocks) &blocks;
 };

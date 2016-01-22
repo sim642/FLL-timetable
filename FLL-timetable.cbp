@@ -43,6 +43,8 @@
 		<Unit filename="Block.hpp" />
 		<Unit filename="BlockOutputter.cpp" />
 		<Unit filename="BlockOutputter.hpp" />
+		<Unit filename="BlocksOutputter.cpp" />
+		<Unit filename="BlocksOutputter.hpp" />
 		<Unit filename="Generator.cpp" />
 		<Unit filename="Generator.hpp" />
 		<Unit filename="MultiGenerator.cpp" />
