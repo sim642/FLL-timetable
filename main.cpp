@@ -37,9 +37,9 @@ int main()
     MultiGenerator g(s, 0, [](State &s)
     {
         return new Generator(s, 0.5f);
-    }, [&](std::thread::id id, bool r)
+    }, [&](unsigned int id, bool r)
     {
-        cout << "attempt " << dec << ++i << " (0x" << hex << id << "): " << r << endl;
+        cout << "attempt " << ++i << " (thread " << id << "): " << r << endl;
     });
 
     r = g.generate();

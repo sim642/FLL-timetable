@@ -14,7 +14,7 @@ MultiGenerator::~MultiGenerator()
 bool MultiGenerator::generate()
 {
 	for (unsigned int i = 0; i < threadcnt; i++)
-		threads.emplace_back(&MultiGenerator::run, this);
+		threads.emplace_back(&MultiGenerator::run, this, i);
 
 	for (auto &thread : threads)
 		thread.join();
@@ -24,7 +24,7 @@ bool MultiGenerator::generate()
 	return true;
 }
 
-void MultiGenerator::run()
+void MultiGenerator::run(unsigned int thread_i)
 {
 	State local_s(s);
 
@@ -36,7 +36,7 @@ void MultiGenerator::run()
 
 		{
 			std::lock_guard<std::mutex> lk(ret_func_mutex);
-			ret_func(std::this_thread::get_id(), r);
+			ret_func(thread_i, r);
 		}
 	}
 	while (!done && !r);
