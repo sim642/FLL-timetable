@@ -26,7 +26,7 @@ void BlockOutputter::output(const std::string& filename)
 	{
 		csv::row_t csvrow;
 		csvrow["start_time"] = strftime(time_format, row.start_time);
-		for (std::size_t i = 0; i < block.columns; i++)
+		for (std::size_t i = 0; i < row.teams.size() && i < block.columns; i++)
 			csvrow[std::to_string(i)] = row.teams[i]->name;
 		*it++ = csvrow;
 	}

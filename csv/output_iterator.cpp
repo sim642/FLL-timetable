@@ -8,7 +8,7 @@ output_iterator_::output_iterator_() : os(nullptr)
 
 }
 
-output_iterator_::output_iterator_(std::ostream& n_os, const cols_t& n_cols) : os(&n_os), cols(n_cols)
+output_iterator_::output_iterator_(std::ostream& n_os, const cols_t& n_cols, const std::string &n_def) : os(&n_os), cols(n_cols), def(n_def)
 {
 	for (auto it = cols.begin(); it != cols.end(); ++it)
 	{
@@ -25,7 +25,8 @@ void output_iterator_::operator()(const row_t& cur)
 	{
 		if (it != cols.begin())
 			*os << ',';
-		*os << escape(cur.find(*it)->second);
+		auto it2 = cur.find(*it);
+		*os << escape(it2 != cur.end() ? it2->second : def);
 	}
 	*os << std::endl;
 }
@@ -59,7 +60,7 @@ output_iterator::output_iterator()
 
 }
 
-output_iterator::output_iterator(std::ostream &n_os, const cols_t &n_cols) : boost::function_output_iterator<output_iterator_>(output_iterator_(n_os, n_cols))
+output_iterator::output_iterator(std::ostream &n_os, const cols_t &n_cols, const std::string &n_def) : boost::function_output_iterator<output_iterator_>(output_iterator_(n_os, n_cols, n_def))
 {
 
 }

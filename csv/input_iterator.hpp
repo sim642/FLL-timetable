@@ -13,7 +13,7 @@ class input_iterator : public boost::iterator_facade<input_iterator, const row_t
 {
 	public:
 		input_iterator();
-		explicit input_iterator(std::istream &n_is);
+		explicit input_iterator(std::istream &n_is, const std::string &n_def = std::string(""));
 		virtual ~input_iterator();
 
 	private:
@@ -23,6 +23,7 @@ class input_iterator : public boost::iterator_facade<input_iterator, const row_t
 		const row_t& dereference() const;
 
 		std::istream *is;
+		const std::string def;
 		cols_t cols;
 		row_t cur;
 };

@@ -9,7 +9,7 @@ input_iterator::input_iterator() : is(nullptr)
 
 }
 
-input_iterator::input_iterator(std::istream &n_is) : is(&n_is)
+input_iterator::input_iterator(std::istream &n_is, const std::string &n_def) : is(&n_is), def(n_def)
 {
 	std::string line;
 	std::getline(*is, line);
@@ -37,9 +37,13 @@ void input_iterator::increment()
 
 	boost::tokenizer<boost::escaped_list_separator<char>> tok(line);
 	cur.clear();
-	int i = 0;
-	for (auto &cell : tok)
-		cur.emplace(cols[i++], cell);
+	std::size_t i = 0;
+	for (auto it = tok.begin(); i < cols.size() && it != tok.end(); i++, ++it)
+		cur.emplace(cols[i], *it);
+
+	unsigned int missing = cols.size() - cur.size();
+	for (auto it = cols.end() - missing; it != cols.end(); ++it)
+		cur.emplace(*it, def);
 }
 
 bool input_iterator::equal(const input_iterator& other) const
