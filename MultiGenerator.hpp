@@ -2,6 +2,7 @@
 #define MULTIGENERATOR_H
 
 #include "AbstractGenerator.hpp"
+#include <functional>
 #include <thread>
 #include <vector>
 #include <mutex>
@@ -11,7 +12,9 @@
 class MultiGenerator : public AbstractGenerator
 {
 	public:
-		MultiGenerator(State &n_s);
+		typedef std::function<void(std::thread::id, bool)> ret_func_t;
+
+		MultiGenerator(State &n_s, ret_func_t n_ret_func = ret_func_t());
 		virtual ~MultiGenerator();
 
 		virtual bool generate();
@@ -20,6 +23,9 @@ class MultiGenerator : public AbstractGenerator
 		void run();
 
 		std::vector<std::thread> threads;
+
+		std::mutex ret_func_mutex;
+		ret_func_t ret_func;
 
 		std::mutex done_mutex;
 		std::condition_variable done_cv;

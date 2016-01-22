@@ -33,21 +33,21 @@ int main()
     bool r;
     int i = 0;
     Timer t;
-    do
-    {
-        MultiGenerator g(s);
 
-        cout << "attempt " << ++i << ": " << flush;
-        r = g.generate();
-        if (r)
-        {
-            cout << "generate successful" << endl;
-            TeamOutputter(s).output("out_teams.csv");
-        }
-        else
-            cout << "generate failed" << endl;
+    MultiGenerator g(s, [&](std::thread::id id, bool r)
+    {
+        cout << "attempt " << ++i << " (" << id << "): " << r << endl;
+    });
+
+    r = g.generate();
+    if (r)
+    {
+        cout << "generate successful" << endl;
+        TeamOutputter(s).output("out_teams.csv");
     }
-    while (!r);
+    else
+        cout << "generate failed" << endl;
+
     auto dur = t.get();
     cout << "took " << std::chrono::duration<double, std::chrono::minutes::period>(dur).count() << " min" << endl;
 
