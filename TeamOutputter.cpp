@@ -16,7 +16,7 @@ void TeamOutputter::output(const std::string& filename)
 {
 	std::ofstream fout(filename);
 
-	std::vector<std::string> cols = {"name"};
+	csv::cols_t cols = {"name"};
 	for (auto &block : blocks)
 		cols.emplace_back(block.name);
 	csv::output_iterator it(fout, cols);
