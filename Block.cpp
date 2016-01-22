@@ -9,7 +9,7 @@ Block::Block(const csv::row_t &row)
 	try
 	{
 		start_time = strptime(row.find("start_time")->second, time_format);
-		parent_name = "";
+		parent_name = boost::none;
 	}
 	catch (const std::runtime_error &e)
 	{

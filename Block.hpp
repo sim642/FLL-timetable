@@ -6,6 +6,7 @@
 #include "common.hpp"
 #include "Row.hpp"
 #include <vector>
+#include <boost/optional.hpp>
 
 class Block
 {
@@ -19,7 +20,7 @@ class Block
 		std::string name;
 		unsigned int columns;
 		system_clock::time_point start_time;
-		std::string parent_name;
+		boost::optional<std::string> parent_name;
 		system_clock::duration setup_time, row_time, cleanup_time;
 		std::vector<Row> rows;
 
