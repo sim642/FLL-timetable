@@ -15,12 +15,12 @@ class Block
 		virtual ~Block();
 
 		std::string name;
-		int columns;
+		unsigned int columns;
 		system_clock::time_point start_time;
 		system_clock::duration setup_time, row_time, cleanup_time;
 		std::vector<Row> rows;
 
-		void create_rows(int teamcnt);
+		void create_rows(unsigned int teamcnt);
 };
 
 #endif // BLOCK_H

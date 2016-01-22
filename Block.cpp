@@ -22,9 +22,9 @@ Block::~Block()
 
 }
 
-void Block::create_rows(int teamcnt)
+void Block::create_rows(unsigned int teamcnt)
 {
-	int rowcnt = std::ceil(float(teamcnt) / columns);
-	for (int i = 0; i < rowcnt; i++)
+	unsigned int rowcnt = std::ceil(float(teamcnt) / columns);
+	for (unsigned int i = 0; i < rowcnt; i++)
 		rows.emplace_back(*this, i);
 }
