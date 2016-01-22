@@ -32,10 +32,13 @@ int main()
         cout << block.name << " " << block.columns << " " << block.rows.size() << " " << strftime("%Y-%m-%d %H:%M", block.start_time) << endl;
 
     bool r;
+    int i = 0;
     Timer t;
     do
     {
         Generator g(teams, blocks);
+
+        cout << "attempt " << ++i << ": " << flush;
         r = g.generate();
         if (r)
         {
