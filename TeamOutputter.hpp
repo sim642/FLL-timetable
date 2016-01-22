@@ -6,7 +6,7 @@
 class TeamOutputter : public Outputter
 {
 	public:
-		TeamOutputter(std::vector<Team> &n_teams, std::vector<Block> &n_blocks);
+		TeamOutputter(State &n_s);
 		virtual ~TeamOutputter();
 
 		virtual void output(const std::string &filename);

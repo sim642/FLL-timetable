@@ -30,6 +30,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-std=c++11" />
+			<Add option="-Wextra" />
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
@@ -37,10 +38,14 @@
 		<Unit filename="Block.hpp" />
 		<Unit filename="Generator.cpp" />
 		<Unit filename="Generator.hpp" />
+		<Unit filename="MultiGenerator.cpp" />
+		<Unit filename="MultiGenerator.hpp" />
 		<Unit filename="Outputter.cpp" />
 		<Unit filename="Outputter.hpp" />
 		<Unit filename="Row.cpp" />
 		<Unit filename="Row.hpp" />
+		<Unit filename="State.cpp" />
+		<Unit filename="State.hpp" />
 		<Unit filename="Team.cpp" />
 		<Unit filename="Team.hpp" />
 		<Unit filename="TeamOutputter.cpp" />

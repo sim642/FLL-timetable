@@ -2,48 +2,47 @@
 #include <fstream>
 #include "csv/csv.hpp"
 #include <algorithm>
-#include <vector>
-#include "Team.hpp"
-#include "Block.hpp"
 #include "Generator.hpp"
 #include "TeamOutputter.hpp"
 #include "Timer.hpp"
+#include "State.hpp"
+#include "MultiGenerator.hpp"
 
 using namespace std;
 
 int main()
 {
-    vector<Team> teams;
+    State s;
     {
         ifstream fin("teams.csv");
-        copy(csv::input_iterator(fin), csv::input_iterator(), back_inserter(teams));
+        copy(csv::input_iterator(fin), csv::input_iterator(), back_inserter(s.teams));
     }
 
-    vector<Block> blocks;
     {
         ifstream fin("blocks.csv");
-        copy(csv::input_iterator(fin), csv::input_iterator(), back_inserter(blocks));
+        copy(csv::input_iterator(fin), csv::input_iterator(), back_inserter(s.blocks));
     }
 
-    for (auto &block : blocks)
-        block.create_rows(teams.size());
+    for (auto &block : s.blocks)
+        block.create_rows(s.teams.size());
 
-    for (auto &block : blocks)
+    for (auto &block : s.blocks)
         cout << block.name << " " << block.columns << " " << block.rows.size() << " " << strftime("%Y-%m-%d %H:%M", block.start_time) << endl;
+
 
     bool r;
     int i = 0;
     Timer t;
     do
     {
-        Generator g(teams, blocks);
+        MultiGenerator g(s);
 
         cout << "attempt " << ++i << ": " << flush;
         r = g.generate();
         if (r)
         {
             cout << "generate successful" << endl;
-            TeamOutputter(teams, blocks).output("out_teams.csv");
+            TeamOutputter(s).output("out_teams.csv");
         }
         else
             cout << "generate failed" << endl;

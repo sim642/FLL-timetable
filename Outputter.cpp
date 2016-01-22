@@ -1,6 +1,6 @@
 #include "Outputter.hpp"
 
-Outputter::Outputter(std::vector<Team>& n_teams, std::vector<Block>& n_blocks) : teams(n_teams), blocks(n_blocks)
+Outputter::Outputter(State &n_s) : teams(n_s.teams), blocks(n_s.blocks)
 {
 
 }

@@ -1,22 +1,20 @@
 #ifndef GENERATOR_H
 #define GENERATOR_H
 
-#include <vector>
-#include "Team.hpp"
-#include "Block.hpp"
+#include "State.hpp"
 #include <random>
 
 class Generator
 {
 	public:
-		Generator(std::vector<Team> &n_teams, std::vector<Block> &n_blocks);
+		Generator(State &n_s);
 		virtual ~Generator();
 
 		bool generate(int i = 0, int j = 0);
 
 	private:
-		std::vector<Team> &teams;
-		std::vector<Block> &blocks;
+		decltype(State::teams) &teams;
+		decltype(State::blocks) &blocks;
 
 		std::mt19937 g;
 };

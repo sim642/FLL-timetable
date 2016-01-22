@@ -2,21 +2,19 @@
 #define OUTPUTTER_H
 
 #include <string>
-#include <vector>
-#include "Team.hpp"
-#include "Block.hpp"
+#include "State.hpp"
 
 class Outputter
 {
 	public:
-		Outputter(std::vector<Team> &n_teams, std::vector<Block> &n_blocks);
+		Outputter(State &n_s);
 		virtual ~Outputter();
 
 		virtual void output(const std::string &filename) = 0;
 
 	protected:
-		std::vector<Team> &teams;
-		std::vector<Block> &blocks;
+		decltype(State::teams) &teams;
+		decltype(State::blocks) &blocks;
 };
 
 #endif // OUTPUTTER_H

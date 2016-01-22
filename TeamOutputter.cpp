@@ -2,7 +2,7 @@
 #include <fstream>
 #include "csv/csv.hpp"
 
-TeamOutputter::TeamOutputter(std::vector<Team>& n_teams, std::vector<Block>& n_blocks) : Outputter(n_teams, n_blocks)
+TeamOutputter::TeamOutputter(State &n_s) : Outputter(n_s)
 {
 
 }

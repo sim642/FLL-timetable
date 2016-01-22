@@ -1,7 +1,7 @@
 #include "Generator.hpp"
 #include <algorithm>
 
-Generator::Generator(std::vector<Team>& n_teams, std::vector<Block>& n_blocks) : teams(n_teams), blocks(n_blocks), g(std::random_device()())
+Generator::Generator(State &n_s) : teams(n_s.teams), blocks(n_s.blocks), g(std::random_device()())
 {
 
 }
