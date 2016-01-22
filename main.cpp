@@ -32,10 +32,10 @@ int main()
         cout << block.name << " " << block.columns << " " << block.rows.size() << " " << strftime("%Y-%m-%d %H:%M", block.start_time) << endl;
 
     bool r;
+    Timer t;
     do
     {
         Generator g(teams, blocks);
-        Timer t;
         r = g.generate();
         if (r)
         {
@@ -44,9 +44,10 @@ int main()
         }
         else
             cout << "generate failed" << endl;
-        auto dur = t.get();
-        cout << "took " << std::chrono::duration<double, std::chrono::minutes::period>(dur).count() << " min" << endl;
     }
     while (!r);
+    auto dur = t.get();
+    cout << "took " << std::chrono::duration<double, std::chrono::minutes::period>(dur).count() << " min" << endl;
+
     return 0;
 }
