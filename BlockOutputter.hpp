@@ -1,10 +1,10 @@
 #ifndef BLOCKOUTPUTTER_H
 #define BLOCKOUTPUTTER_H
 
-#include "Outputter.hpp"
+#include "AbstractOutputter.hpp"
 #include "Block.hpp"
 
-class BlockOutputter : public Outputter
+class BlockOutputter : public AbstractOutputter
 {
 	public:
 		BlockOutputter(State &n_s, std::size_t i);

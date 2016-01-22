@@ -3,7 +3,7 @@
 #include "csv/csv.hpp"
 #include "common.hpp"
 
-TeamOutputter::TeamOutputter(State &n_s) : Outputter(n_s)
+TeamOutputter::TeamOutputter(State &n_s) : AbstractOutputter(n_s)
 {
 
 }

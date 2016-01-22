@@ -1,14 +1,14 @@
-#ifndef OUTPUTTER_H
-#define OUTPUTTER_H
+#ifndef ABSTRACTOUTPUTTER_H
+#define ABSTRACTOUTPUTTER_H
 
 #include <string>
 #include "State.hpp"
 
-class Outputter
+class AbstractOutputter
 {
 	public:
-		Outputter(State &n_s);
-		virtual ~Outputter();
+		AbstractOutputter(State &n_s);
+		virtual ~AbstractOutputter();
 
 		virtual void output(const std::string &filename) = 0;
 
@@ -19,4 +19,4 @@ class Outputter
 		decltype(State::blocks) &blocks;
 };
 
-#endif // OUTPUTTER_H
+#endif // ABSTRACTOUTPUTTER_H

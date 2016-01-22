@@ -1,9 +1,9 @@
 #ifndef BLOCKSOUTPUTTER_H
 #define BLOCKSOUTPUTTER_H
 
-#include "Outputter.hpp"
+#include "AbstractOutputter.hpp"
 
-class BlocksOutputter : public Outputter
+class BlocksOutputter : public AbstractOutputter
 {
 	public:
 		BlocksOutputter(State &n_s);

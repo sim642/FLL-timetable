@@ -2,7 +2,7 @@
 #include "BlockOutputter.hpp"
 #include <boost/format.hpp>
 
-BlocksOutputter::BlocksOutputter(State &n_s) : Outputter(n_s)
+BlocksOutputter::BlocksOutputter(State &n_s) : AbstractOutputter(n_s)
 {
 
 }

@@ -1,9 +1,9 @@
 #ifndef TEAMOUTPUTTER_H
 #define TEAMOUTPUTTER_H
 
-#include "Outputter.hpp"
+#include "AbstractOutputter.hpp"
 
-class TeamOutputter : public Outputter
+class TeamOutputter : public AbstractOutputter
 {
 	public:
 		TeamOutputter(State &n_s);

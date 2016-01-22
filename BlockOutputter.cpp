@@ -3,7 +3,7 @@
 #include "csv/csv.hpp"
 #include "common.hpp"
 
-BlockOutputter::BlockOutputter(State &n_s, std::size_t i) : Outputter(n_s), block(blocks[i])
+BlockOutputter::BlockOutputter(State &n_s, std::size_t i) : AbstractOutputter(n_s), block(blocks[i])
 {
 
 }
