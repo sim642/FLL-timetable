@@ -39,6 +39,8 @@
 		</Linker>
 		<Unit filename="AbstractGenerator.cpp" />
 		<Unit filename="AbstractGenerator.hpp" />
+		<Unit filename="AbstractOutputter.cpp" />
+		<Unit filename="AbstractOutputter.hpp" />
 		<Unit filename="Block.cpp" />
 		<Unit filename="Block.hpp" />
 		<Unit filename="BlockOutputter.cpp" />
@@ -49,8 +51,6 @@
 		<Unit filename="Generator.hpp" />
 		<Unit filename="MultiGenerator.cpp" />
 		<Unit filename="MultiGenerator.hpp" />
-		<Unit filename="Outputter.cpp" />
-		<Unit filename="Outputter.hpp" />
 		<Unit filename="Row.cpp" />
 		<Unit filename="Row.hpp" />
 		<Unit filename="State.cpp" />
@@ -61,6 +61,7 @@
 		<Unit filename="TeamOutputter.hpp" />
 		<Unit filename="Timer.cpp" />
 		<Unit filename="Timer.hpp" />
+		<Unit filename="blocks.csv" />
 		<Unit filename="common.cpp" />
 		<Unit filename="common.hpp" />
 		<Unit filename="csv/common.hpp" />
@@ -70,6 +71,7 @@
 		<Unit filename="csv/output_iterator.cpp" />
 		<Unit filename="csv/output_iterator.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="teams.csv" />
 		<Extensions>
 			<code_completion />
 			<debugger />
