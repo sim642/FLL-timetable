@@ -19,9 +19,12 @@ Block::Block(const csv::row_t &row)
 	setup_time = std::chrono::minutes(stoi(row.find("setup_time")->second));
 	row_time = std::chrono::minutes(stoi(row.find("row_time")->second));
 	cleanup_time = std::chrono::minutes(stoi(row.find("cleanup_time")->second));
+	after_name = row.find("after_name")->second;
+	if (after_name->empty())
+		after_name = boost::none;
 }
 
-Block::Block(const Block &other) : name(other.name), columns(other.columns), start_time(other.start_time), parent_name(other.parent_name), setup_time(other.setup_time), row_time(other.row_time), cleanup_time(other.cleanup_time)
+Block::Block(const Block &other) : name(other.name), columns(other.columns), start_time(other.start_time), parent_name(other.parent_name), setup_time(other.setup_time), row_time(other.row_time), cleanup_time(other.cleanup_time), after_name(other.after_name)
 {
 	for (auto &row : other.rows)
 		rows.emplace_back(row, *this);

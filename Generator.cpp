@@ -38,7 +38,7 @@ bool Generator::generate_(size_t i, size_t j)
 		for (auto it = rows.begin(); it != end; ++it)
 		{
 			auto &row = **it;
-			if ((blocks[j].columns - row.teams.size() > 0) && !row.any_conflicts(team.rows))
+			if ((blocks[j].columns - row.teams.size() > 0) && !row.any_conflicts(team.rows) && row.after(team.rows))
 			{
 				team.rows.push_back(&row);
 				row.teams.push_back(&team);

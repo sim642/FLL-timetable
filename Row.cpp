@@ -40,3 +40,21 @@ bool Row::any_conflicts(const std::vector<Row*>& others) const
 	}
 	return false;
 }
+
+bool Row::after(const Row &other) const
+{
+	return other.start_time < start_time;
+}
+
+bool Row::after(const std::vector<Row*> &others) const
+{
+	if (block.after_name)
+	{
+		for (auto &other : others)
+		{
+			if (*block.after_name == other->block.name && !after(*other))
+				return false;
+		}
+	}
+	return true;
+}

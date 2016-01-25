@@ -22,6 +22,8 @@ class Block
 		system_clock::time_point start_time;
 		boost::optional<std::string> parent_name;
 		system_clock::duration setup_time, row_time, cleanup_time;
+		boost::optional<std::string> after_name;
+
 		std::vector<Row> rows;
 
 		void create_rows(unsigned int teamcnt);
