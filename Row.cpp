@@ -21,17 +21,17 @@ system_clock::time_point Row::end_time() const
 	return start_time + block.row_time + block.cleanup_time;
 }
 
-bool Row::during(const system_clock::time_point& tp) const
+bool Row::during(const system_clock::time_point &tp) const
 {
 	return (start_time - block.setup_time <= tp) && (tp < start_time + block.row_time);
 }
 
-bool Row::conflicts(const Row& other) const
+bool Row::conflicts(const Row &other) const
 {
 	return during(other.start_time) || other.during(start_time);
 }
 
-bool Row::any_conflicts(const std::vector<Row*>& others) const
+bool Row::any_conflicts(const std::vector<Row*> &others) const
 {
 	for (auto &other : others)
 	{
